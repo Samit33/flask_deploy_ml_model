@@ -22,8 +22,9 @@ def apicall():
     """
     data = ""
     if request.method == 'POST' :
-        test_json = request.get_json()
-        test = pd.read_json(test_json, orient='records')
+        # test_json = request.get_json()
+        # test = pd.read_json(test_json, orient='records')
+        test = pd.read_csv('data/test.csv', encoding="utf-8-sig")
 
         # To resolve the issue of TypeError: Cannot compare types 'ndarray(dtype=int64)' and 'str'
         # test['Dependents'] = [str(x) for x in list(test['Dependents'])]
