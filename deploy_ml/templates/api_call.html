@@ -10,18 +10,9 @@
         <p>{{ data | safe }}</p>
     {% endif %}
  
-    <form action="" method="post">
-        <p>
-            <label for="username">Username</label>
-            <input type="text" name="username">
-        </p>
-        <p>
-            <label for="password">Password</label>
-            <input type="password" name="password">
-        </p>
-        <p>
-            <input type="submit">
-        </p>
+    <form action="upload.html" method="post" enctype="multipart/form-data">
+        <input type="file" name="fileupload" id="fileToUpload">
+        <input type="submit" value="Upload File" name="submit">
     </form>
 </body>
 </html>
