@@ -7,17 +7,21 @@
 <body>
 
 {% if data %}
+    {# "data" is a html table and safe filter here will render the html syntax#}
     <p>{{ data | safe }}</p>
-{% endif %}
+    {#Clicking on this link will generate a get request and trigger a view function#}
+    <p><a href="/downloads">Click me to download result</a></p>
  
+{% else %}
+{# The data filled in it is posted to the action = ‘/specify_URL’ URL, here blank means it is posted to the same URL#}
 <form action="" method="post" enctype="multipart/form-data">
     
-    {% for field in form %}
+    {% for field in file_form %}
      <p>{{ field.label() }}</p>
      <p>{{ field }} </p>
     {% endfor %}
  
 </form>
- 
+{% endif %} 
 </body>
 </html>
