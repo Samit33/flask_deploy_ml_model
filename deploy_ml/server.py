@@ -11,7 +11,6 @@ from flask import Flask, jsonify, request, render_template, Response, session
 import dill as pickle
 from form import TestDataForm
 
-
 app = Flask(__name__)
 app.debug = True
 app.config['SECRET_KEY'] = 'a really really really really long secret key'
@@ -75,6 +74,7 @@ def index():
         prediction_series = list(pd.Series(predictions))
 
         final_predictions = pd.DataFrame(list(zip(loan_ids, prediction_series)))
+        final_predictions.columns = ["Loan ID", "Prediction"]
 
         """We can be as creative in sending the responses.
            But we need to send the response codes as well.

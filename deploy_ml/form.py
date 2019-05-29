@@ -6,5 +6,5 @@ from wtforms import SubmitField, FileField
 from wtforms.validators import DataRequired, Email
  
 class TestDataForm(FlaskForm):
-    File = FileField("File: ", validators=[DataRequired()])
+    File = FileField("Upload Your File", validators=[DataRequired()])
     submit = SubmitField("Submit")

@@ -1,27 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Loan Default Prediction</title>
+    {# Added below lines for leveraging bootstrap #}
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">    
 </head>
-<body>
 
+<body>
+<div class="container-narrow">
+        <ul class="nav nav-pills pull-right">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+        <h3 class="text-muted">Predictive Models</h3>
+        <hr>
+        <div class="jumbotron">
+                <h1>Loan Default Prediction!</h1>
+                <p class="lead">Use our API service. Find out the future defaulters.
+                     Positive & safe loan borrowing experience for the customers</p>
+                <a class="btn btn-large btn-success" href="#">Sign up today</a>
+              </div>
+        </hr>
+<div class ="container">
 {% if data %}
-    {# "data" is a html table and safe filter here will render the html syntax#}
-    <p>{{ data | safe }}</p>
-    {#Clicking on this link will generate a get request and trigger a view function#}
+    {# "data" is a html table and safe filter here will render the html syntax #}
+    <p>Prediction Results</p>
+    <p>{{ data|safe}}</p>
+    {# Clicking on this link will generate a get request and trigger a view function #}
     <p><a href="/downloads">Click me to download result</a></p>
  
 {% else %}
 {# The data filled in it is posted to the action = ‘/specify_URL’ URL, here blank means it is posted to the same URL#}
 <form action="" method="post" enctype="multipart/form-data">
     
-    {% for field in file_form %}
+    {% for field in file_form if field.name != 'csrf_token' %}
      <p>{{ field.label() }}</p>
      <p>{{ field }} </p>
     {% endfor %}
  
 </form>
-{% endif %} 
+{% endif %}
+
+</div>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 </body>
 </html>
